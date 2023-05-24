@@ -11,6 +11,15 @@ module Enumerable
     end
     res
   end
+
+  def my_select(&block)
+    res = []
+    self.size.times do |i|
+      is_included = block.call(self[i])
+      res.push(self[i]) if is_included
+    end
+    res
+  end
 end
 
 # You will first have to define my_each

@@ -61,6 +61,14 @@ module Enumerable
     end
     res
   end
+
+  def my_inject(initial_value = nil, &block)
+    prev = initial_value ? initial_value : 0
+    self.size.times do |i|
+      prev = block.call(prev, self[i])
+    end
+    prev
+  end
 end
 
 # You will first have to define my_each

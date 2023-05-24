@@ -26,6 +26,14 @@ module Enumerable
     end
     true
   end
+
+  def my_any?(&block)
+    self.size.times do |i|
+      is_passed = block.call(self[i])
+      return true if is_passed
+    end
+    false
+  end
 end
 
 # You will first have to define my_each

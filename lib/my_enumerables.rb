@@ -34,6 +34,14 @@ module Enumerable
     end
     false
   end
+
+  def my_none?(&block)
+    self.size.times do |i|
+      is_passed = block.call(self[i])
+      return false if is_passed
+    end
+    true
+  end
 end
 
 # You will first have to define my_each

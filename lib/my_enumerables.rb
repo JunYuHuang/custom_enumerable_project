@@ -8,4 +8,15 @@ end
 # to this method
 class Array
   # Define my_each here
+  def my_each(&block)
+    # takes a block as a parameter
+    # returns array instance itself transformed by
+    # whatever the block callback does to it
+    res = []
+    self.size.times do |i|
+      block_res = block.call(self[i])
+      res.push(block_res.nil? ? self[i] : block_res)
+    end
+    res
+  end
 end

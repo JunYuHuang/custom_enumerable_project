@@ -1,5 +1,16 @@
 module Enumerable
   # Your code goes here
+  def my_each_with_index(&block)
+    # takes a block as a parameter
+    # returns array instance itself transformed by
+    # whatever the block callback does to it
+    res = []
+    self.size.times do |i|
+      block_res = block.call(self[i], i)
+      res.push(block_res.nil? ? self[i] : block_res)
+    end
+    res
+  end
 end
 
 # You will first have to define my_each

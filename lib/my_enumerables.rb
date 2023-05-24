@@ -53,6 +53,14 @@ module Enumerable
     end
     res
   end
+
+  def my_map(&block)
+    res = []
+    self.size.times do |i|
+      res.push(block.call(self[i]))
+    end
+    res
+  end
 end
 
 # You will first have to define my_each

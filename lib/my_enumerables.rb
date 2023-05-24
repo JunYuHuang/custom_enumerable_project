@@ -1,9 +1,7 @@
 module Enumerable
   # Your code goes here
+
   def my_each_with_index(&block)
-    # takes a block as a parameter
-    # returns array instance itself transformed by
-    # whatever the block callback does to it
     res = []
     self.size.times do |i|
       block_res = block.call(self[i], i)
@@ -19,6 +17,14 @@ module Enumerable
       res.push(self[i]) if is_included
     end
     res
+  end
+
+  def my_all?(&block)
+    self.size.times do |i|
+      is_passed = block.call(self[i])
+      return false unless is_passed
+    end
+    true
   end
 end
 
